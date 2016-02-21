@@ -1,0 +1,19 @@
+description = 'module-runner'
+dependencies {
+    compile project(':module-hello')
+    compile project(':module-bye')
+    compile group: 'cglib', name: 'cglib', version: '3.2.0'
+    testCompile group: 'junit', name: 'junit', version: '3.8.1'
+}
+
+def mainClassName = "com.epam.training.App"
+
+jar {
+    manifest {
+        attributes "Main-Class": "$mainClassName"
+    }
+
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}

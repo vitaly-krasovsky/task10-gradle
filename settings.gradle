@@ -1,0 +1,8 @@
+rootProject.name = 'module-main'
+include ':module-hello'
+include ':module-bye'
+include ':module-runner'
+
+project(':module-hello').projectDir = "$rootDir/module-hello" as File
+project(':module-bye').projectDir = "$rootDir/module-bye" as File
+project(':module-runner').projectDir = "$rootDir/module-runner" as File
